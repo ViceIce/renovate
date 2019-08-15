@@ -1,5 +1,21 @@
 version: 2.1
+orbs:
+  win: circleci/windows@1.0.0
+
 commands:
+  init-win:
+    steps:
+      - run:
+          name: 'Preserve LF endings and symbolic links on check out'
+          command: |
+            git config --global core.autocrlf false
+            git config --global core.symlinks true
+  init-linux:
+    steps:
+      - run:
+          name: 'Install deps'
+          command: |
+            curl https://bootstrap.pypa.io/get-pip.py | python
   test:
     steps:
       - checkout
@@ -8,11 +24,10 @@ commands:
           command: |
             python --version
             python3 --version
-            curl https://bootstrap.pypa.io/get-pip.py | python
             pip --version
+            git --version
             git config --global user.email "bot@renovateapp.com"
             git config --global user.name "Renovate Bot"
-            git --version
 
       - run:
           name: Installing Dependencies
@@ -67,11 +82,23 @@ jobs:
     docker:
       - image: amd64/node:10.16.3@sha256:47577703778ff7d741425c5f5c81df719b1b3bb647c4beae02a1d1d327afbe8c
     steps:
+      - init-linux
       - test
   test_node_12:
     docker:
       - image: amd64/node:12.8.1@sha256:0d54e057c018e505d2ffed61d6459b11ca6daa40f07831be1fe9905dc58efda1
     steps:
+      - init-linux
+      - test
+  test_node_12_win:
+    executor:
+      name: win/vs2019
+      shell: bash.exe
+    steps:
+      - run:
+          name: Install global dependencies
+          command: cinst yarn python
+      - init-win
       - test
   release:
     docker:
