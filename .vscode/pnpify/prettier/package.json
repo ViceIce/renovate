@@ -1,0 +1,5 @@
+{
+  "name": "prettier",
+  "version": "6.8.0-pnpify",
+  "main": "lib/api.js"
+}

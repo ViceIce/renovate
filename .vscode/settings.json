@@ -1,7 +1,10 @@
 {
   "eslint.validate": [
     "javascript",
-    { "language": "typescript", "autoFix": true }
+    {
+      "language": "typescript",
+      "autoFix": true
+    }
   ],
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -14,5 +17,8 @@
   },
   "files.associations": {
     "Dockerfile.*": "dockerfile"
-  }
+  },
+  "typescript.tsdk": ".vscode/pnpify/typescript/lib",
+  "eslint.nodePath": ".vscode/pnpify",
+  "prettier.prettierPath": ".vscode/pnpify/prettier"
 }
