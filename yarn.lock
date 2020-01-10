@@ -12153,7 +12153,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@*, typescript@3.7.4":
+typescript@3.7.4:
   version: 3.7.4
   resolution: "typescript@npm:3.7.4"
   bin:
@@ -12163,7 +12163,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@*#builtin<compat/typescript>, typescript@patch:typescript@3.7.4#builtin<compat/typescript>":
+"typescript@patch:typescript@3.7.4#builtin<compat/typescript>":
   version: 3.7.4
   resolution: "typescript@patch:typescript@npm%3A3.7.4#builtin<compat/typescript>::hash=bafb4c"
   bin:
